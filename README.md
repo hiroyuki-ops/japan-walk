@@ -1,24 +1,33 @@
-# README
+# NIPPON散歩
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+日本魅力をもっとたくさんの人に知ってもらうために、
+旅行した時に撮った写真や簡単なエピソードを投稿して、
+様々なユーザーが閲覧、評価をするサイトです。
 
-Things you may want to cover:
 
-* Ruby version
+### サイトテーマ
+日本全国の様々な魅力を個人個人の写真やエピソードを通して共有する。
 
-* System dependencies
+### テーマを選んだ理由
+自分が旅行が趣味で、一度日本全国を旅行した経験があるので、
+もっと地方お店やまだ知られていない秘境、観光スポットなどを共有できたらなと思いテーマとして選びました。
 
-* Configuration
+### ターゲットユーザ
+趣味が旅行の人、全世代に向けて
 
-* Database creation
+### 主な利用シーン
+旅行を計画する際に興味の持てる場所を探すため
+実際に旅行に来ていて時間が余っているので、近くにいい観光スポットはないか探すため
 
-* Database initialization
+## 設計書
 
-* How to run the test suite
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1mGVPXEKbFkt_a25zBiDCbYWHRRl1aVIOQAnGZVcylFA/edit#gid=0
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- 仮想環境：Vagrant,VirtualBox
