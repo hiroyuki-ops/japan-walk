@@ -1,0 +1,23 @@
+<header>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<% if user_signed_in? %>
+				    <li id="welcom_cutoumer">
+                    ようこそ、<%= "#{current_user.name}" %>さん！
+                    </li>
+					<li><%= link_to "マイページ", user_path(current_user), class:"header_menu" %></li>
+					<li><%= link_to "新規投稿", class:"header_menu" %></li>
+					<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"header_menu" %></li>
+					<li><%= link_to 'トップ画面', root_path, class: "fas fa-home icon" %></li>
+					<li><%= link_to 'about', homes_about_path, class: "fas fa-info-circleicon" %></li>
+				<% else %>
+				    <li><%= link_to "投稿一覧", class:"header_menu" %></li>
+			        <li><%= link_to "新規登録", new_user_registration_path, class:"header_menu" %></li>
+			        <li><%= link_to "About", homes_about_path, class:"header_menu" %></li>
+			        <li><%= link_to "ログイン", new_user_session_path, class:"header_menu" %></li>
+			    <% end %>
+			</div>
+		</div>
+	</nav>
+</header>

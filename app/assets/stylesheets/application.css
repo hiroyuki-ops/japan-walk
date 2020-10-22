@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+
+#wrapper {
+
+}
+
+
+/*---------------ヘッダー--------------*/
+header {
+	color: #000;
+	margin-bottom: 100px;
+}
+
+.navbar-header {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.icon-bar {
+	width: 15%
+	height: 50px;
+	text-align: center;
+
+}
+
+.navbar-nav {
+	display: flex;
+	justify-content: center;
+}
+
+/*-----------body------------*/
+.container {
+
+}
+
+/*-----------footer------------*/
+footer {
+    text-align: center;
+}
+
+.nav-footer {
+	display: flex;
+	text-align: center;
+}

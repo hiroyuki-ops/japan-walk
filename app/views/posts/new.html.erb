@@ -1,2 +1,24 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+ <%= form_with model: post, local: true do |f| %>
+ <%= render 'layouts/error',model: f.object %>
+    <%= attachment_image_tag post, :post_image_id, fallback: "no_image.jpg", class: "update-img" %>
+
+
+<p class="margin-top">説明</p>
+    <%= f.text_area :body, class: "form-control"  %>
+
+<p class="margin-top">撮影時期（年/月）<strong style="color:red">必須</strong></p>
+  <%= f.date_select(
+        :shooting_date,
+        use_month_numbers: true,
+        start_year: 2020,
+        discard_day:true,
+        end_year: 2000,
+        prompt:"--",
+        date_separator: '/') %>
+  <div>
+
+  <div class="pull-left">
+    <%= f.submit "保存する", class: "btn btn-primary btn"%>
+  </div>
+
+<% end %>
