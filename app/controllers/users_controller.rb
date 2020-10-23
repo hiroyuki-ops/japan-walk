@@ -13,9 +13,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
       if @user.update(user_params)
-        redirect_to @user
+        redirect_to user_path
       else
         render 'edit'
       end
@@ -28,5 +28,10 @@ class UsersController < ApplicationController
   end
 
   def followers
+  end
+
+  private
+  def user_params
+      params.require(:user).permit(:name, :email, :profile_image, :birthday, :introduction)
   end
 end

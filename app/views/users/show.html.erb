@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="container">
-      <h1>japan-walk passport</h1>
+      <h1>japan-walk</h1>
       <div class="clearfix margin-top">
-        <div class="pull-left col-md-3 col-sm-12">
-          <%= attachment_image_tag @user, :profile_imageid, format: "jpeg", fallback: "no_image.jpg", size:"200x200", class: "img-rounded" %>
-        </div>
-        <div class="pull-left col-md-9 col-sm-12">
+        <div class="field">
+		    <%= attachment_image_tag @user, :profile_image, id: :img_prev, fallback: "no_image.jpg", size:"300x300" %>
+		</div>
+        <div>
           <h3><%= @user.name %></h3>
         <div>
           <%= @user.introduction %>
         </div>
-        <div class="margin-top">
+        <div>
           <%= @user.birthday %>
         </div>
         <div>

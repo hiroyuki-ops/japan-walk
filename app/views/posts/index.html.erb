@@ -1,9 +1,9 @@
 <div class="row">
-	<% posts.each do |post| %>
+	<% @posts.each do |post| %>
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-5 show-pic-index">
 				<div class="col-xs-12 star-body">
 			    <div class="inview show-pic">
-			        <%= link_to attachment_image_tag(post,:post_image_id, fallback: "no_image.jpg",) %>
+			        <%= link_to attachment_image_tag(post,:post_image_id, fallback: "no_image.jpg",), post_path(post) %>
 				<div><%= post.shooting_date %></div>
 				<div><%= post.body %></div>
 				</div>
