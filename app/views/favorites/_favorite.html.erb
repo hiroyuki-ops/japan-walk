@@ -1,0 +1,10 @@
+<% if current_user.already_favorited?(post) %>
+  <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-heart"></span>
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(post), method: :post, remote: true do %>
+    <span class="glyphicon glyphicon-heart-empty"></span>
+  <% end %>
+<% end %>
+<%= post.favorites.count %>
