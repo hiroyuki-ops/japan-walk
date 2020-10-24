@@ -1,13 +1,16 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show, :edit, :search]
+    before_action :authenticate_user!, except: [:index, :edit, :search]
   def index
     @posts = Post.all
   end
 
   def show
+      @favorite = Favorite.new
     if user_signed_in?
       @post = Post.find(params[:id])
       @user = @post.user
+      @post_comment = PostComment.new
+      @post_comments = @post.post_comments
     else
       flash[:success] = "ここから先はログインが必要です！"
       redirect_to new_user_session_path

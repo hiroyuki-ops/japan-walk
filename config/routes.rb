@@ -20,5 +20,10 @@ Rails.application.routes.draw do
     get 'posts', to: 'posts#taglist'
   end
 
+
+  post   '/favorite/:post_id' => 'favorites#create', as: 'create'
+  delete '/favorite/:post_id' => 'favorites#destroy', as: 'destroy'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
