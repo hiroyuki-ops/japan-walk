@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
 
   def edit
@@ -22,6 +23,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id]) #特定のidを持つ情報を取得
+    @user.destroy
+    flash[:success] = 'ユーザーを削除しました。'
+    redirect_to :root_path #削除に成功すればrootページに戻る
   end
 
   def follows
