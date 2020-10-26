@@ -10,7 +10,25 @@
           <%= render 'relationships/follow_button', user: @user %>
         </div>
         <div>
+          <%= 'followers' %>
+          <%= link_to followers_user_path(@user) do %>
+            <%= @user.relationships.count %>
+          <% end %>
+        </div>
+        <div>
+          <%= 'following' %>
+          <%= link_to following_user_path(@user) do %>
+            <%= @user.reverse_of_relationships.count %>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to posts_path do %>
+            いいねした投稿（<%= @user.favorites.count %>件）
+          <% end %>
+        </div>
+        <div>
           <h3><%= @user.name %></h3>
+        </div>
         <div>
           <%= @user.introduction %>
         </div>
@@ -29,6 +47,7 @@
         <% @posts.each do |post| %>
           <div class="col-lg-3 col-md-4 col-sm-4 col-xs-5 show-pic-index">
             <div class="col-xs-12 star-body">
+              <div><%= render partial: 'tags/tag_list', locals: {tag_list: post.tag_list} %></div>
               <div class="inview show-pic">
                   <%= link_to attachment_image_tag(post,:post_image_id, fallback: "no_image.jpg",), post_path(post) %></div>
               <div><%= post.user.name %></div>
