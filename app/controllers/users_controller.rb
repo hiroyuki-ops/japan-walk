@@ -29,10 +29,16 @@ class UsersController < ApplicationController
     redirect_to :root_path #削除に成功すればrootページに戻る
   end
 
-  def follows
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    render 'followers'
   end
 
   def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'follows'
   end
 
   private

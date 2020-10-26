@@ -4,6 +4,8 @@
 			<div class="col-xs-12 star-body">
 			    <div class="inview show-pic">
 			        <%= link_to attachment_image_tag(post,:post_image_id, fallback: "no_image.jpg",), post_path(post) %>
+			    <div><%= render partial: 'tags/tag_list', locals: {tag_list: post.tag_list} %>
+
 				<div><%= post.shooting_date %></div>
 				<div><%= post.body %></div>
 			</div>

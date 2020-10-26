@@ -3,6 +3,10 @@
     <%= attachment_image_tag @post, :post_image_id, fallback: "no_image.jpg", size:"300x300" %>
     <%= f.attachment_field :post_image %>
 
+    <p class="tag-list">タグ入力フォーム</p>
+      <%= f.label :tag_list %>
+      <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %>
+
     <p class="margin-top">説明</p>
       <%= f.text_area :body, class: "form-control"  %>
 

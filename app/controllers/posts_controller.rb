@@ -2,6 +2,9 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :edit, :search]
   def index
     @posts = Post.all
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def show
@@ -54,6 +57,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, :area, spot_attributes: [:address])
+    params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, :area, :tag_list, spot_attributes: [:address])
+  end
+
+  def task_params
+    params.require(:user).permit(:name, :description, :tag_list)
+    #tag_list を追加
   end
 end
