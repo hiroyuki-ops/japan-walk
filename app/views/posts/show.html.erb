@@ -22,8 +22,16 @@
 			</div>
 
 
-		<div class="col-md-6 col-xs-12 margin">
+		<div class="col-md-6 col-xs-12">
 			<div class="col-xs-offset-1">
+				<div>撮影時期</div>
+				<div><%= @post.shooting_date.strftime('%Y年%m月') %></div>
+
+				<div>
+					 <% if @user == current_user %>
+					  	<%= link_to '編集', edit_post_path(@post), class: "btn-sm btn-primary" %>
+					<% end %>
+				</div>
 				<div>
                     <div>
                       <%= render partial: 'favorites/favorite', locals:{ post: @post } %>
@@ -37,19 +45,10 @@
 		            <% end %>
                 	<%= render 'post_comments/post_comment', post_comment: @post_comment %>
                 </div>
-				<div class="col-xs-3">撮影時期</div>
-				<div class="col-xs-7"><%= @post.shooting_date.strftime('%Y年%m月') %></div>
-
-				<div class="col-xs-2 col-md-3 pull-left margin">
-					 <% if @user == current_user %>
-					  	<%= link_to '編集', edit_post_path(@post), class: "btn-sm btn-primary" %>
-					<% end %>
-				</div>
+                <div>
+		            <%= link_to "一覧ページに戻る", posts_path, class: "btn btn-default btn-xs" %>
+	            </div>
 			</div>
 		</div>
-	</div>
-	<div class="col-xs-offset-2 col-md-offset-2 margin">
-		<%= link_to "一覧ページに戻る", posts_path, class: "btn btn-default btn-xs" %>
-	</div>
 	</div>
 </div>

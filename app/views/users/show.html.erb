@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="container">
+    <div>
       <h1>japan-walk</h1>
       <div class="clearfix margin-top">
         <div class="field">
@@ -10,19 +10,19 @@
           <%= render 'relationships/follow_button', user: @user %>
         </div>
         <div>
-          <%= 'followers' %>
+          <%= 'フォロー' %>
           <%= link_to followers_user_path(@user) do %>
             <%= @user.relationships.count %>
           <% end %>
         </div>
         <div>
-          <%= 'following' %>
+          <%= 'フォロワー' %>
           <%= link_to following_user_path(@user) do %>
             <%= @user.reverse_of_relationships.count %>
           <% end %>
         </div>
         <div>
-          <%= link_to posts_path do %>
+          <%= link_to posts_path(@user.favorites) do %>
             いいねした投稿（<%= @user.favorites.count %>件）
           <% end %>
         </div>
@@ -45,14 +45,14 @@
       </div>
       <div class="row">
         <% @posts.each do |post| %>
-          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-5 show-pic-index">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             <div class="col-xs-12 star-body">
-              <div><%= render partial: 'tags/tag_list', locals: {tag_list: post.tag_list} %></div>
               <div class="inview show-pic">
                   <%= link_to attachment_image_tag(post,:post_image_id, fallback: "no_image.jpg",), post_path(post) %></div>
               <div><%= post.user.name %></div>
-              <div><%= post.shooting_date %></div>
               <div><%= post.body %></div>
+              <div><%= render partial: 'tags/tag_list', locals: {tag_list: post.tag_list} %></div>
+              <div><%= post.shooting_date %></div>
             </div>
           </div>
         <% end %>

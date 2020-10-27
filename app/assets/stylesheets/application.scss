@@ -14,6 +14,9 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 #wrapper {
 
 }
@@ -31,7 +34,7 @@ header {
 }
 
 .icon-bar {
-	width: 15%
+	width: 15%;
 	height: 50px;
 	text-align: center;
 
