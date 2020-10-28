@@ -1,0 +1,27 @@
+<div class="conteiner">
+    <%= form_with(model:@post, url:posts_path, method: :POST, local: true) do |f| %>
+        <%= attachment_image_tag @post, :post_image_id, fallback: "no_image.jpg", size:"300x300" %>
+        <%= f.attachment_field :post_image %>
+
+        <p class="tag-list">タグ入力フォーム</p>
+          <%= f.label :tag_list %>
+          <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %>
+
+        <p class="margin-top">説明</p>
+          <%= f.text_area :body, class: "form-control"  %>
+
+        <p class="margin-top">撮影時期（年/月）<strong style="color:red">必須</strong></p>
+          <%= f.date_select(
+                :shooting_date,
+                use_month_numbers: true,
+                start_year: 2020,
+                discard_day:true,
+                end_year: 2000,
+                prompt:"--",
+                date_separator: '/') %>
+
+        <div class="pull-left">
+          <%= f.submit "保存する", class: "btn btn-primary btn"%>
+        </div>
+    <% end %>
+</div>

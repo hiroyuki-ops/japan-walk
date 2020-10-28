@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JapanWalk</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <title>JapanWalk</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <meta charset="UTF-8">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body id="wrapper">
+        <div id="header">
+            <%= render 'layouts/header' %>
+        </div>
+
+        <div class="container">
+            <%= yield %>
+        </div>
+
+        <div id="footer">
+            <%= render 'layouts/footer' %>
+        </div>
+    </body>
 </html>

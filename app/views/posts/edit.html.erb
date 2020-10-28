@@ -1,0 +1,30 @@
+<div class="container padding-top">
+	<h1>投稿を編集する</h1>
+
+	<%= form_with(model:@post, url:post_path, method: :PATCH) do |f| %>
+        <%= attachment_image_tag @post, :post_image_id, id: :img_prev, fallback: "no_image.jpg", class: "update-img" %>
+        <%= f.attachment_field :post_image %>
+
+			<p class="margin-top">説明</p>
+			    <%= f.text_area :body, class: "form-control"  %>
+
+
+			<p class="margin-top">撮影時期（年/月）<strong style="color:red">必須</strong></p>
+			  <%= f.date_select(
+			        :shooting_date,
+			        use_month_numbers: true,
+			        start_year: 2020,
+			        discard_day:true,
+			        end_year: 2000,
+			        prompt:"--",
+			        date_separator: '/') %>
+
+		    <div class="actions pull-right">
+		      <%= f.submit "更新する", class: "btn btn-primary" %>
+		    </div>
+
+	<% end %>
+	<div>
+	    <%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: 'btn-default btn glyphicon glyphicon-trash' %>
+	</div>
+ </div>
