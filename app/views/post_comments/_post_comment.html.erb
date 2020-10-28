@@ -7,12 +7,12 @@
 			<% end %>
 		</td>
 		<td>
-          <%= post_comment.comment %>
+            <%= post_comment.comment %>
 		</td>
-		<% if @user == current_user %>
 		<td>
-			<%= link_to "Destroy", post_post_comments_path(id: post_comment.id,post_id: @post.id), method: :delete, remote: true, class: "btn-sm btn-danger" %>
+		    <% if @user == current_user %>
+				<%= link_to "Destroy", post_post_comments_path(id: post_comment.id,post_id: @post.id), method: :delete, remote: true, class: "btn-sm btn-danger" %>
+			<% end %>
 		</td>
-		<% end %>
 	</tr>
 <% end %>

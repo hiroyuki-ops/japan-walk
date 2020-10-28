@@ -55,6 +55,10 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    @posts = Post.search(params[:search])
+  end
+
   private
   def post_params
     params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, :area, :tag_list, spot_attributes: [:address])

@@ -1,4 +1,11 @@
 <div class="container">
+	<div>
+		<p>検索</p>
+        <%= form_tag(search_posts_path,:method => 'get') do %>
+            <%= text_field_tag :search %>
+            <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+	</div>
 	<div class="row">
 		<% @posts.each do |post| %>
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -6,10 +13,15 @@
 				    <div class="inview show-pic">
 				        <%= link_to attachment_image_tag(post,:post_image_id, fallback: "no_image.jpg",), post_path(post) %>
 				    </div>
-				    <div><%= render partial: 'tags/tag_list', locals: {tag_list: post.tag_list} %>
+				    <div>
+				    	<%= render partial: 'tags/tag_list', locals: {tag_list: post.tag_list} %>
 				    </div>
-					<div><%= post.shooting_date %></div>
-					<div><%= post.body %></div>
+					<div>
+						<%= post.shooting_date %>
+					</div>
+					<div>
+						<%= post.body %>
+					</div>
 				</div>
 			</div>
 		<% end %>
