@@ -6,7 +6,6 @@ class FavoritesController < ApplicationController
     user = current_user
     post = Post.find(params[:post_id])
   	favorite = Favorite.create(user_id: user.id, post_id: post.id)
-    render 'create'
   end
 
   def destroy
@@ -14,7 +13,6 @@ class FavoritesController < ApplicationController
   	post = Post.find(params[:post_id])
     favorite = Favorite.find_by(user_id: user.id, post_id: post.id)
     favorite.destroy
-    render 'destroy'
   end
 
   private

@@ -1,4 +1,5 @@
 <div class="container padding-top">
+	<%= flash[:success] %>
 	<div class="row">
 		<input type="hidden" id="lat" value="<%= @lat %>"></div>
 	    <input type="hidden" id="lng" value="<%= @lng %>"></div>
@@ -42,14 +43,15 @@
 				</div>
 				<div>
                     <%= render partial: 'favorites/favorite', locals:{ post: @post } %>
-                    <%= @post.favorites.count %>
                 </div>
                 <div>
-                	<%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
-			            <%= f.text_area :comment %>
+                	<%= form_with(model: [@post, @post_comment], remote: true) do |f| %>
+			            <%= f.text_area :comment, id: "comment__textarea" %>
 			            <%= f.submit "保存" %>
 		            <% end %>
-                	<%= render 'post_comments/post_comment', post_comment: @post_comment %>
+		        </div>
+		        <div class="post_comments">
+                	<%= render 'post_comments/post_comment', post_comments: @post.post_comments %>
                 </div>
 			</div>
 		</div>
