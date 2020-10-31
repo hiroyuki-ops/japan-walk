@@ -24,11 +24,11 @@
 					    </td>
 					    <td>
 					        <%= 'フォロー数' %>
-					        <%= user.relationships.count %>
+					        <%= user.following_relationships.count %>
 					    </td>
 					    <td>
 					        <%= 'フォロワー数' %>
-					        <%= user.reverse_of_relationships.count %>
+					        <%= user.follower_relationships.count %>
 					    </td>
 					    <td>
 					  	    <%= link_to 'show', user_path(user) %>

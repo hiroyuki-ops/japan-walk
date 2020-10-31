@@ -12,7 +12,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <% @user.follows.each do |user| %>
+                <% @user.following.each do |user| %>
                     <tr>
                         <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
                         </td>
@@ -21,11 +21,11 @@
                         </td>
                         <td>
                             <%= 'フォロー数' %>
-                            <%= user.relationships.count %>
+                            <%= user.following_relationships.count %>
                         </td>
                         <td>
                             <%= 'フォロワー数' %>
-                            <%= user.reverse_of_relationships.count %>
+                            <%= user.follower_relationships.count %>
                         </td>
                         <td>
                             <%= link_to 'show', user_path(user) %>
