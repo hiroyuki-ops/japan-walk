@@ -1,2 +1,2 @@
-$('#js-table-comment').prepend("<%= j(render 'comment',{ comment: @comment }) %>");
-$('#comment_body').val('')
+$('.post_comments').html("<%= escape_javascript(render 'post_comments/post_comment',{ post_comments: @post_comment.post.post_comments }) %>");
+$('#comment__textarea').val('')

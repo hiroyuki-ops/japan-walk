@@ -5,17 +5,19 @@ Rails.application.routes.draw do
   root "homes#top"
   get 'homes/about'
 
+
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
     member do
      get :following, :followers
     end
   end
+
   resources :posts do
     post 'add' => 'favorites#create'
     delete '/add' => 'favorites#destroy'
     collection {get "search"}
     resource :favorites, only: [:create, :destroy, :index]
-    resource :post_comments, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
   end
 
   resources :relationships, only: [:create, :destroy]
