@@ -2,6 +2,11 @@ class FavoritesController < ApplicationController
 
     before_action :set_favorite
 
+  def index
+    @user = User.find_by(id: params[:id])
+    @favorites = Favorite.where(user_id: @user.id)
+  end
+
   def create
     user = current_user
     post = Post.find(params[:post_id])

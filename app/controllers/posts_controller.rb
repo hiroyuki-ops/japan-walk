@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :edit, :search]
   def index
-    @posts = Post.all
-    if params[:tag_name]
-      @posts = Post.tagged_with("#{params[:tag_name]}")
+    @posts = if params[:category_name].present?
+      Post.joins(:category).where('categories.category_name = ?', params[:category_name])
+    else
+      Post.all
     end
+    #@posts = Post.all
   end
 
   def show
@@ -13,6 +15,7 @@ class PostsController < ApplicationController
       @user = @post.user
       @post_comment = PostComment.new
       @post_comments = @post.post_comments
+      @category = Category.find(params[:id])
     else
       flash[:success] = "ここから先はログインが必要です！"
       redirect_to new_user_session_path
@@ -56,16 +59,18 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:search])
+    @category_list = Category.all
+    @category = Category.find(params[:id])
+    @posts = @category.posts.all
   end
 
   private
   def post_params
-    params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, :area, :tag_list, spot_attributes: [:address])
+    params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, :area, :category_id, spot_attributes: [:address])
   end
 
   def task_params
-    params.require(:user).permit(:name, :description, :tag_list)
+    params.require(:user).permit(:name, :description)
     #tag_list を追加
   end
 end
