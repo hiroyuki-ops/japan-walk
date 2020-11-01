@@ -1,0 +1,17 @@
+<h2>検索結果</h2>
+<div class="col-xs-10 col-xs-offset-1">
+    <%= @category_list.each do |list| %>
+    	<span>
+    		<%= link_to list.category_name, category_posts_path(post_category_id: list.id) %>
+    	</span>
+    <% end %>
+</div>
+<div>
+	<%= "#{@category.category_name}"%>
+</div>
+
+<div class="col-xs-10 col-xs-offset-1">
+    <%= @posts.each do |post| %>
+        <%= link_to post.content, post %>
+    <% end %>
+</div>
