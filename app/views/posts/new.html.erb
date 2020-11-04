@@ -12,6 +12,16 @@
         <p class="margin-top">説明</p>
           <%= f.text_area :body, class: "form-control"  %>
 
+        <div class="spot margin-top">
+            <%= f.fields_for :spot do |s|%>
+                <%= s.label :address, "レビュー場所(Google Mapで検索)", class: 'spot_title' %>
+                <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot_text' %>
+
+            <% end %>
+            <input onclick="codeAddress()", type= "button", value= "検索する"}></input>
+            <div class="map" id= "map", style= "height: 320px; width: 450px;"></div>
+        </div>
+
         <p class="margin-top">撮影時期（年/月）<strong style="color:red">必須</strong></p>
           <%= f.date_select(
                 :shooting_date,

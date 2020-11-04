@@ -1,10 +1,8 @@
 class FavoritesController < ApplicationController
 
-    before_action :set_favorite
+    before_action :set_favorite, except: [:index]
 
   def index
-    @user = User.find_by(id: params[:id])
-    @favorites = Favorite.where(user_id: @user.id)
   end
 
   def create

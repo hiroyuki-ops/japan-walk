@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :edit, :search]
   def index
-    @posts = if params[:category_name].present?
-      Post.joins(:category).where('categories.category_name = ?', params[:category_name])
+    if params[:category_name]
+      category = Category.find_by(category_name: params[:category_name])
+      @posts = Post.where(category_id: category.id)
     else
-      Post.all
+      @posts = Post.all
     end
-    #@posts = Post.all
   end
 
   def show
@@ -16,6 +16,10 @@ class PostsController < ApplicationController
       @post_comment = PostComment.new
       @post_comments = @post.post_comments
       @category = Category.find(params[:id])
+      @lat = @post.spot.latitude
+      @lng = @post.spot.longitude
+      gon.lat = @lat
+      gon.lng = @lng
     else
       flash[:success] = "ここから先はログインが必要です！"
       redirect_to new_user_session_path
@@ -24,6 +28,7 @@ class PostsController < ApplicationController
 
   def new
       @post = Post.new
+      @post.build_spot
   end
 
   def create
