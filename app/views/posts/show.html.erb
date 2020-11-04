@@ -39,6 +39,12 @@
 				<div>
 					<%= @post.shooting_date.strftime('%Y年%m月') %>
 				</div>
+				<div>撮影場所</div>
+				<div class="show_address">
+					<%= @post.spot.address %>
+				</div>
+				<div class="show_maps" id= "show_map", style= "height: 300px; width: 400;">
+				</div>
 				<div>
 					<% if @user == current_user %>
 					  	<%= link_to '編集', edit_post_path(@post), class: "btn-sm btn-primary" %>
