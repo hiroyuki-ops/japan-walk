@@ -3,7 +3,7 @@
 		<% @posts.each do |post| %>
 			<div class="col-xs-4">
 			    <div class="inview">
-			    	<%= link_to post_path(post) do %>
+			    	<%= link_to post_path(post),data: {"turbolinks"=>false} do %>
 			        <% if post.post_images.present? %>
 					  <% post.post_images.first(1).each do |image| %>
 					    <%= attachment_image_tag image, :image, :fill, 250, 250 %>

@@ -2,7 +2,7 @@
 	<div class="container">
     <nav class="nav navbar-nav navbar-left">
         <div class="header-title">
-        	<%= link_to "JapanWalk", posts_path, class: "fas fa-plane" %>
+        	<%= link_to "JapanWalk", root_path, class: "fas fa-plane", data: {"turbolinks"=>false} %>
         </div>
     </nav>
 	<nav class="nav navbar-nav navbar-right">
@@ -12,7 +12,7 @@
 				<li><%= link_to "", user_path(current_user), class: "fas fa-user" %></li>
 				<li><%= link_to "", posts_path, class: "fas fa-images" %></li>
 				<li><%= link_to "", new_post_path, class: "fas fa-plus" %></li>
-				<li><%= link_to '', root_path, class: "fas fa-home" %></li>
+				<li><%= link_to '', root_path, class: "fas fa-home", data: {"turbolinks"=>false} %></li>
 				<li><%= link_to '', homes_about_path, class: "fas fa-info-circle" %></li>
 				<li><%= link_to "", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
 			<% else %>
