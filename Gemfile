@@ -68,7 +68,7 @@ gem "bootstrap-sass", "~>3.3.6"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 
 gem 'acts-as-taggable-on', '~> 6.0' #タグ機能用のgem
 

@@ -2,8 +2,7 @@
 	<h1>投稿を編集する</h1>
 
 	<%= form_with(model:@post, url:post_path, method: :PATCH) do |f| %>
-        <%= attachment_image_tag @post, :post_image, id: :img_prev, fallback: "no_image.jpg", class: "update-img" %>
-        <%= f.attachment_field :post_image %>
+        <%= f.attachment_field :post_images_images, multiple: true, fallback: "no_image.jpg", size:"300x300" %>
 
 			<p class="margin-top">説明</p>
 			    <%= f.text_area :body, class: "form-control"  %>

@@ -1,7 +1,6 @@
 <div class="conteiner">
     <%= form_with(model: @post, url:posts_path, method: :POST, local: true) do |f| %>
-        <%= attachment_image_tag @post, :post_image_id, fallback: "no_image.jpg", size:"300x300" %>
-        <%= f.attachment_field :post_image %>
+        <%= f.attachment_field :post_images_images, multiple: true, fallback: "no_image.jpg", size:"300x300" %>
 
         <div class="check_box">
             <%= f.label :category_id, 'カテゴリー' %>

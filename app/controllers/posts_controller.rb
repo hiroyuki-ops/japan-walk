@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :edit, :search]
+    before_action :authenticate_user!, except: [:new, :index, :edit, :search]
   def index
     if params[:category_name]
       category = Category.find_by(category_name: params[:category_name])
@@ -7,11 +7,12 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+    @post = Post.find_by(id: params[:id])
   end
 
   def show
     if user_signed_in?
-      @post = Post.find(params[:id])
+      @post = Post.find_by(id: params[:id])
       @user = @post.user
       @post_comment = PostComment.new
       @post_comments = @post.post_comments
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
   def new
       @post = Post.new
       @post.build_spot
+      @post.post_images.build
   end
 
   def create
@@ -71,7 +73,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, :area, :category_id, spot_attributes: [:address])
+    params.require(:post).permit(:body, :rate, :shooting_date, :area, :category_id, spot_attributes: [:address], post_images_images: [])
   end
 
   def task_params

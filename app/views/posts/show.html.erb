@@ -4,64 +4,69 @@
 		<input type="hidden" id="lat" value="<%= @lat %>"></div>
 	    <input type="hidden" id="lng" value="<%= @lng %>"></div>
 		<div class="clearfix container">
-			<div class="col-md-6 col-xs-12">
+			<div class="rower col-xs-12">
+				<%= link_to user_path(@user.id) do %>
+					<%= attachment_image_tag(@user, :profile_image, fallback: "no_image.jpg", height: '50px', width: 'auto', class: "rounded-circle pull-left") %>
+					<h3 class="pull-left profile-name"><%= @user.name %></h3>
+				<% end %>
+				<div class="text-right">
+					<small>投稿日 <%= @post.created_at.strftime('%Y/%m/%d/ %H:%M') %></small>
+				</div>
+		    </div>
+		    <div class="col-xs-6">
+		        <% if @post.post_images.present? %>
+				    <% @post.post_images.each do |image| %>
+				    <div class="post-show-image">
+				        <%= attachment_image_tag image, :image, height: 'auto', width: '100%' %>
+				    </div>
+				    <% end %>
+				<% else %>
+				    <%= image_tag 'no_image.jpg', size: '250x250' %>
+				<% end %>
+
+			</div>
+
+		    <div class="col-xs-6">
 				<div>
-					<div>
-						<%= link_to user_path(@user.id) do %>
-							<%= attachment_image_tag(@usr, :post_image_id, fallback: "no_image.jpg", size: "200x200", class: "profile-image-icon pull-left") %>
-							<% if @user == current_user %>
-							  <h5 class="pull-left profile-name"><%= @user.name %></h5>
-							<% end %>
-						<% end %>
-					</div>
+					撮影時期
+					<%= @post.shooting_date.strftime('%Y年%m月') %>
 				</div>
 
-				<div class="col-xs-10 margin col-xs-offset-1">
+				<div class="show_address">
+					撮影場所
+					<%= @post.spot.address %>
+				</div>
+				<div class="show_maps" id= "show_map", style= "height: 400px; width: auto;">
+				</div>
+			    <div class="col-xs-6">
 					<%= link_to posts_path(category_name: @post.category.category_name) do %>
 					    <%= @post.category.category_name %>
 					<% end %>
 			    </div>
-
-				<div class="col-xs-10 margin col-xs-offset-1">
-					<%= @post.body %>
-			    </div>
-
-				<div class="pull-right">
-					<small>投稿日 <%= @post.created_at.strftime('%Y/%m/%d/ %H:%M') %></small>
-				</div>
-                <div class="col-xs-10 margin col-xs-offset-1">
-		            <%= link_to "一覧ページに戻る", posts_path, class: "btn btn-default btn-xs" %>
-	            </div>
-			</div>
-
-		    <div class="col-md-6 col-xs-12">
-				<div>撮影時期</div>
-				<div>
-					<%= @post.shooting_date.strftime('%Y年%m月') %>
-				</div>
-				<div>撮影場所</div>
-				<div class="show_address">
-					<%= @post.spot.address %>
-				</div>
-				<div class="show_maps" id= "show_map", style= "height: 300px; width: 400;">
-				</div>
-				<div>
-					<% if @user == current_user %>
-					  	<%= link_to '編集', edit_post_path(@post), class: "btn-sm btn-primary" %>
-					<% end %>
-				</div>
-				<div>
+				<div class="col-xs-6">
                     <%= render partial: 'favorites/favorite', locals:{ post: @post } %>
                 </div>
-                <div>
+
+				<div class="col-xs-12">
+					<%= @post.body %>
+			    </div>
+				<div class="pull-right">
+				    <% if @user == current_user %>
+				  	    <%= link_to '編集', edit_post_path(@post), class: "btn-sm btn-primary" %>
+				    <% end %>
+			    </div>
+                <div class="col-xs-12">
                 	<%= form_with(model: [@post, @post_comment], remote: true) do |f| %>
 			            <%= f.text_area :comment, id: "comment__textarea" %>
 			            <%= f.submit "保存" %>
 		            <% end %>
 		        </div>
-		        <div class="post_comments">
+		        <div class="post_comments" >
                 	<%= render 'post_comments/post_comment', post_comments: @post.post_comments %>
                 </div>
+                <div class="pull-right">
+		            <%= link_to "投稿一覧ページに戻る", posts_path, class: "btn btn-default btn-xs" %>
+	            </div>
 			</div>
 		</div>
 	</div>
