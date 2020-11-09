@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function() {
             window.location.href = `posts?category_name=${data.fullName}`;
         }
     });
-    // $(document).ready(function(){
-    //   japamMap()
-    // });
+     // $(document).ready(function(){
+     //   japamMap()
+     // });
 });

@@ -18,31 +18,51 @@
 @import "bootstrap";
 
 #wrapper {
-
+	background-color: #E6FFE9;;
+    font-family: HiraMinPro-W6;
+    color: #000000;
+    position: relative;
+    box-sizing: border-box;
+    padding-bottom: 200px;
+    min-height: 100vh;
 }
+
 
 
 /*---------------ヘッダー--------------*/
 header {
-	color: #000;
-	margin-bottom: 100px;
+	height: 100px;
+	padding-top: 30px;
+	padding-right: 25px;
+	margin-bottom: 25px;
 }
 
-.navbar-header {
-	display: flex;
-	justify-content: flex-end;
+nav ul li {
+	list-style: none;
+	display: inline-block;
 }
 
-.icon-bar {
-	width: 15%;
-	height: 50px;
-	text-align: center;
-
+nav ul li::after{
+    content: "";
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #000;
 }
 
-.navbar-nav {
-	display: flex;
-	justify-content: center;
+nav ul li:last-child::after {
+    content: "";
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #000;
+}
+
+.header-title {
+	font-family: 'Bangers', cursive;
+	font-size: 30px;
+	color: #FF4F02;
 }
 
 /*-----------body------------*/
@@ -52,6 +72,14 @@ header {
 
 /*-----------footer------------*/
 footer {
-    text-align: center;
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	bottom: 0;
+	background-color: #444444;
+}
+
+.nav-footer {
+	margin: 20px;
 }
 
