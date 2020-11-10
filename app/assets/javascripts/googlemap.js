@@ -1,5 +1,5 @@
-let map //変数の定義
-let geocoder //変数の定義
+let map; //変数の定義
+let geocoder; //変数の定義
 $(document).on('turbolinks:load', function() {
 
 
@@ -27,7 +27,7 @@ function initMap(){ //コールバック関数
 
 
 $(document).ready(function(){
-  initMap()
+  initMap();
 })
 
 
