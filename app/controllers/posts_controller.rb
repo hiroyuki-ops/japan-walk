@@ -21,6 +21,7 @@ class PostsController < ApplicationController
       @lng = @post.spot.longitude
       gon.lat = @lat
       gon.lng = @lng
+      pp @post.spot
     else
       flash[:success] = "ここから先はログインが必要です！"
       redirect_to new_user_session_path

@@ -1,5 +1,5 @@
-let map //変数の定義
-let geocoder //変数の定義
+let map; //変数の定義
+let geocoder; //変数の定義
 $(document).on('turbolinks:load', function() {
 
 
@@ -12,22 +12,29 @@ function initMap(){ //コールバック関数
       zoom: 15, //拡大率（1〜21まで設定可能）
     });
   }else{ //'map'というidが無かった場合
-    map = new google.maps.Map(document.getElementById('show_map'), { //'show_map'というidを取得してマップを表示
-      center: {lat: gon.lat, lng: gon.lng}, //controllerで定義した変数を緯度・経度の値とする（値はDBに入っている）
-      zoom: 15, //拡大率（1〜21まで設定可能）
-    });
+    if (document.getElementById('show_map')){
+      console.log('-gon-');
+      console.log(gon.lat);
+      console.log(gon.lng);
+      if ( gon.lat && gon.lng){
+        map = new google.maps.Map(document.getElementById('show_map'), { //'show_map'というidを取得してマップを表示
+          center: {lat: gon.lat, lng: gon.lng}, //controllerで定義した変数を緯度・経度の値とする（値はDBに入っている）
+          zoom: 15, //拡大率（1〜21まで設定可能）
+        });
 
-    marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
-      position:  {lat: gon.lat, lng: gon.lng}, //マーカーを落とす位置を決める（値はDBに入っている）
-      map: map //マーカーを落とすマップを指定
-    });
+        marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
+          position:  {lat: gon.lat, lng: gon.lng}, //マーカーを落とす位置を決める（値はDBに入っている）
+          map: map //マーカーを落とすマップを指定
+        });
+      }
+    }
   }
 }
 
 
 
 $(document).ready(function(){
-  initMap()
+  initMap();
 })
 
 
