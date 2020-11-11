@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
     before_action :set_favorite, except: [:index]
 
   def index
+    @user = User.find(params[:id])
   end
 
   def create

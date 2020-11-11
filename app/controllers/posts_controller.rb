@@ -39,7 +39,7 @@ class PostsController < ApplicationController
       @post.user_id = current_user.id
       @user = current_user
     if @post.save
-      flash[:success] = "写真が保存されました！"
+      flash[:success] = "投稿が保存されました！"
       redirect_to user_path(@user)
     else
       render 'new'
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   def update
       @post = Post.find(params[:id])
       if @post.update(post_params)
-        flash[:success] = "写真が更新されました！"
+        flash[:success] = "投稿が更新されました！"
         redirect_to post_path
       else
         render 'edit'

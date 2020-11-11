@@ -36,7 +36,7 @@
 					撮影場所
 					<%= @post.spot.address %>
 				</div>
-				<div class="show_maps" id= "show_map", style= "height: 400px; width: auto;">
+				<div class="show_maps" data-turbolinks="false" id= "show_map", style= "height: 400px; width: auto;">
 				</div>
 			    <div class="col-xs-6">
 					<%= link_to posts_path(category_name: @post.category.category_name) do %>
@@ -56,6 +56,7 @@
 				    <% end %>
 			    </div>
                 <div class="col-xs-12">
+                	コメントを投稿<br>
                 	<%= form_with(model: [@post, @post_comment], remote: true) do |f| %>
 			            <%= f.text_area :comment, id: "comment__textarea" %>
 			            <%= f.submit "保存" %>
