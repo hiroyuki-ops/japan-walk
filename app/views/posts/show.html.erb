@@ -36,7 +36,7 @@
 					撮影場所
 					<%= @post.spot.address %>
 				</div>
-				<div class="show_maps" id= "show_map", style= "height: 400px; width: auto;">
+				<div class="show_maps" data-turbolinks="false" id= "show_map", style= "height: 400px; width: auto;">
 				</div>
 			    <div class="col-xs-6">
 					<%= link_to posts_path(category_name: @post.category.category_name) do %>
