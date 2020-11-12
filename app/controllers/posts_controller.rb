@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:new, :index, :edit, :search]
+    before_action :ensure_correct_user, only: [:edit, :update]
   def index
     if params[:category_name]
       category = Category.find_by(category_name: params[:category_name])
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
       @post.user_id = current_user.id
       @user = current_user
     if @post.save
-      flash[:success] = "写真が保存されました！"
+      flash[:success] = "投稿が保存されました！"
       redirect_to user_path(@user)
     else
       render 'new'
@@ -53,7 +54,7 @@ class PostsController < ApplicationController
   def update
       @post = Post.find(params[:id])
       if @post.update(post_params)
-        flash[:success] = "写真が更新されました！"
+        flash[:success] = "投稿が更新されました！"
         redirect_to post_path
       else
         render 'edit'
@@ -80,5 +81,13 @@ class PostsController < ApplicationController
   def task_params
     params.require(:user).permit(:name, :description)
     #tag_list を追加
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    @user = @post.user
+    unless @user == current_user
+      redirect_to posts_path
+    end
   end
 end

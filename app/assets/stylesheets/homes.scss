@@ -7,3 +7,41 @@
 .map-container {
 	text-align: center;
 }
+
+.top-head-text {
+    background-color: #BDB76B;
+    width: 60%;
+    border-radius: 40px;
+}
+.top-head-text h2 {
+  color: #fff;
+  background-size: cover;
+  padding-top: 25px;
+  padding-bottom:25px;
+
+}
+
+.about-explain {
+	position: relative;
+	height: 760px;
+	background-color: #77C8D0;
+  color: white;
+  .about-content {
+    padding-top: 80px;
+    .animate-title {
+     font-size: 2em;
+      }
+    .about-pic {
+      width: 800px;
+    .text {
+      color: white;
+      }
+    }
+  }
+  &:nth-of-type(2) {
+    background-color: #FFC0CB;
+  }
+  &:nth-of-type(3) {
+    background-color: #FF773E;
+  }
+}

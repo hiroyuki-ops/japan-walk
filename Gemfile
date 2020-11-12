@@ -84,3 +84,5 @@ end
 gem "gmaps4rails"
 gem "geocoder"
 gem "gon"
+
+gem 'rails-i18n'

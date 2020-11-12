@@ -1,9 +1,11 @@
-<div class="conteiner">
+<div class="container">
     <%= form_with(model: @post, url:posts_path, method: :POST, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+        <p>写真</p>
         <%= f.attachment_field :post_images_images, multiple: true, fallback: "no_image.jpg", size:"300x300" %>
 
         <div class="check_box">
-            <%= f.label :category_id, 'カテゴリー' %>
+            <%= f.label :category_id, 'カテゴリー' %><strong style="color:red">必須</strong>
             <br>
             <%= f.collection_select :category_id, Category.all, :id, :category_name, { prompt: '選択してください' }, class: 'form-control' %>
         </div>
