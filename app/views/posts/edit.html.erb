@@ -1,7 +1,9 @@
 <div class="container padding-top">
 	<h1>投稿を編集する</h1>
 
-	<%= form_with(model:@post, url:post_path, method: :PATCH) do |f| %>
+	<%= form_with(model:@post, url:post_path, method: :PATCH, local: true) do |f| %>
+	    <%= render 'layouts/error_messages', model: f.object %>
+
         <%= f.attachment_field :post_images_images, multiple: true, fallback: "no_image.jpg", size:"300x300" %>
 
 			<p class="margin-top">説明</p>
