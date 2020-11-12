@@ -2,9 +2,9 @@ class Post < ApplicationRecord
 	belongs_to :user
 	has_many :post_comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
-    has_many :users, through: :favorites, source: :user
+  has_many :users, through: :favorites, source: :user
 	validates :shooting_date, presence: true
-    belongs_to :category
+  belongs_to :category
 
   has_one :spot, dependent: :destroy
   accepts_nested_attributes_for :spot

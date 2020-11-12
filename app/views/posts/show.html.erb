@@ -17,7 +17,7 @@
 		        <% if @post.post_images.present? %>
                 <div class="post-show-image">
 				    <% @post.post_images.each do |image| %>
-				    <div> <%= attachment_image_tag image, :image, height: 'auto', width: '100%' %></div>
+				    <div><%= attachment_image_tag image, :image, height: '100%', width: 'auto' %></div>
 				    <% end %>
 				</div>
 				<% else %>

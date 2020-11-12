@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:new, :index, :edit, :search]
+    before_action :ensure_correct_user, only: [:edit, :update]
   def index
     if params[:category_name]
       category = Category.find_by(category_name: params[:category_name])
@@ -80,5 +81,13 @@ class PostsController < ApplicationController
   def task_params
     params.require(:user).permit(:name, :description)
     #tag_list を追加
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    @user = @post.user
+    unless @user == current_user
+      redirect_to posts_path
+    end
   end
 end
