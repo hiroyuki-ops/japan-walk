@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]) #特定のidを持つ情報を取得
     @user.destroy
     flash[:success] = 'ユーザーを削除しました。'
-    redirect_to :root_path #削除に成功すればrootページに戻る
+    redirect_to root_path #削除に成功すればrootページに戻る
   end
 
   def following
